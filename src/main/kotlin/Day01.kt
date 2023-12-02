@@ -1,4 +1,5 @@
 import kotlin.math.min
+import kotlin.time.measureTimedValue
 
 fun main()
 {
@@ -42,11 +43,12 @@ fun main()
             "${finalString.first()}${finalString.last()}".toInt()
         }
 
+
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day1", "test")
-    check(part2(testInput) == 281)
+    check(part2(testInput).println() == 281)
 
     val input = readInput("Day1", "input")
-    part1(input).println()
-    part2(input).println()
+    measureTimedValue { part1(input) }.println()
+    measureTimedValue { part2(input) }.println()
 }
