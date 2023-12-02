@@ -37,26 +37,18 @@ fun main()
 
     fun part2(input: List<String>) = input.parseInto()
         .sumOf {
-            val minimums = mutableMapOf(
-                "red" to -1,
-                "green" to -1,
-                "blue" to -1
-            )
+            val minimums = mutableMapOf<String, Int>()
 
             for (pair in it.second.flatten())
             {
+                minimums.putIfAbsent(pair.second, pair.first)
                 if (minimums[pair.second]!! < pair.first)
                 {
                     minimums[pair.second] = pair.first
                 }
             }
 
-            minimums.values.reduce { acc, i ->
-                if (i == -1)
-                    return@reduce acc
-
-                (if (acc == 0) 1 else acc) * i
-            }
+            minimums.values.reduce { acc, i -> acc * i }
         }
 
     // test if implementation meets criteria from the description, like:
