@@ -8,7 +8,6 @@ fun main()
         val value: Int
     )
 
-    val numberExtractor = "[1-9]\\d*".toRegex()
     fun List<String>.mapIntoPlaneAndParts() = with(with(this) {
         val pointMappings = mutableMapOf<CharPoint, Char>()
         forEachIndexed { index, schematic ->
@@ -19,7 +18,7 @@ fun main()
 
         CharPlane2D(points = pointMappings)
     }) {
-        this to map { numberExtractor.findAll(it).toList() }
+        this to map { unsignedNumberExtractor.findAll(it).toList() }
             .mapIndexed { index, results ->
                 results.map {
                     Part(
