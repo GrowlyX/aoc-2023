@@ -4,6 +4,9 @@ import java.security.MessageDigest
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 
+val nonNumericExtractor = "[^0-9]".toRegex()
+val numericExtractor = "[^a-z]".toRegex()
+
 val unsignedNumberExtractor = "[1-9]\\d*".toRegex()
 val signedNumberExtractor = "-?[1-9]\\d*".toRegex()
 

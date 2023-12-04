@@ -2,9 +2,6 @@ import kotlin.time.measureTimedValue
 
 fun main()
 {
-    val nonNumeric = "[^0-9]".toRegex()
-    val numeric = "[^a-z]".toRegex()
-
     val limits = mapOf("red" to 12, "green" to 13, "blue" to 14)
 
     fun List<String>.parseInto() =
@@ -21,8 +18,8 @@ fun main()
             it.first.removePrefix("Game ").toInt() to
                 it.second.map { group ->
                     group.map { dice ->
-                        dice.replace(nonNumeric, "").toInt() to
-                            dice.replace(numeric, "")
+                        dice.replace(nonNumericExtractor, "").toInt() to
+                            dice.replace(numericExtractor, "")
                     }
                 }
         }
