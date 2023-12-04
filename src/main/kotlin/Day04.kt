@@ -60,20 +60,17 @@ fun main()
         }
         .forEach {
             val instances = mappings.computeIfAbsent(it.first.cardID) { 1 }
+            if (it.second.isEmpty())
+            {
+                return@forEach
+            }
 
-            repeat(instances) { _ ->
-                if (it.second.isEmpty())
-                {
-                    return@repeat
-                }
-
-                for (nextCard in 0..<it.second.size)
-                {
-                    mappings.compute(
-                        it.first.cardID + nextCard + 1
-                    ) { _, value ->
-                        (value ?: 1) + 1
-                    }
+            for (nextCard in 0..<it.second.size)
+            {
+                mappings.compute(
+                    it.first.cardID + nextCard + 1
+                ) { _, value ->
+                    (value ?: 1) + instances
                 }
             }
         }
