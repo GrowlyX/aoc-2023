@@ -65,8 +65,8 @@ fun main()
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day3", "test")
-    println(part1(testInput).println())
-    println(part2(testInput).println())
+    check(part1(testInput) == 4361)
+    check(part2(testInput) == 467835)
 
     val input = readInput("Day3", "input")
     measureTimedValue { part1(input) }.println()
