@@ -45,10 +45,10 @@ fun main()
                     val stageDelimiter = line.indexOf('-')
                     currentStage = Stage(
                         from = line.substring(
-                            0..stageDelimiter
+                            0..<stageDelimiter
                         ),
                         to = line.substring(
-                            stageDelimiter + 4..line.indexOf(' ')
+                            stageDelimiter + 4..<line.indexOf(' ')
                         )
                     )
                     continue
