@@ -7,8 +7,14 @@ import kotlin.io.path.readLines
 val nonNumericExtractor = "[^0-9]".toRegex()
 val numericExtractor = "[^a-z]".toRegex()
 
-val unsignedNumberExtractor = "[1-9]\\d*".toRegex()
-val signedNumberExtractor = "-?[1-9]\\d*".toRegex()
+val unsignedNumberExtractor = "[0-9]\\d*".toRegex()
+val signedNumberExtractor = "-?[0-9]\\d*".toRegex()
+
+fun String.extractNumbers() = unsignedNumberExtractor.findAll(this)
+    .toList()
+    .map { result ->
+        result.value.toInt()
+    }
 
 /**
  * Reads lines from the given input txt file.

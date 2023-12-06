@@ -25,12 +25,6 @@ fun main()
         val winningNumbers = it.substring(cardLabel + 2..numberListDelimiter - 2)
         val revealedNumbers = it.substring(numberListDelimiter + 2)
 
-        fun String.extractNumbers() = unsignedNumberExtractor.findAll(this)
-            .toList()
-            .map { result ->
-                result.value.toInt()
-            }
-
         parsedCardID to Card(
             cardID = parsedCardID,
             winningNumbers = winningNumbers.extractNumbers().toSet(),
